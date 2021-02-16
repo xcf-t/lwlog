@@ -1,25 +1,24 @@
 export class Logger {
 
-    private static settings = {
-
-    };
-
     private static sinks = [];
     private static levels: Array<LogLevel> = [];
 
-    constructor(
+    protected constructor(
         private scopes: Array<string>,
     ) {}
 
-    public static attachGlobal() {
-
+    public static attachGlobal(logger?: Logger) {
+        global['logger'] = logger || Logger.create();
     }
 
-}
+    public static create(): Logger {
+        return new Logger([]);
+    }
 
-interface LoggerSettings {
-    padding: 'left' | 'right' | 'center';
-    paddingType: 'space' | 'dot' | 'underscore';
+    public scope(scope: string): Logger {
+        return new Logger(this.scopes.concat(scope));
+    }
+
 }
 
 interface LogSink {

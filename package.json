@@ -1,0 +1,10 @@
+{
+  "name": "lwlog",
+  "version": "2.0.0",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.28"
+  }
+}
